@@ -3,18 +3,17 @@ import { IProduct } from './products';
 import { ProductService } from './product.service';
 
 @Component({
-    selector:"pm-products",
-    templateUrl:'./product-list.component.html',
-    styleUrls:['./product-list.component.css']
+  templateUrl: './product-list.component.html',
+  styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
  pageTitle: string = 'Product List';
  imageWidth: number=50;
  imageMargin: number=2;
  showImage: boolean=false;
- errorMessage: string;
+ errorMessage: string ="";
 
- _listFilter: string;
+ _listFilter: string ="";
  get listFilter(): string{
      return this._listFilter;
  }
@@ -23,7 +22,7 @@ export class ProductListComponent implements OnInit {
     this.filteredProducts = this.listFilter ? this.performFilter(this.listFilter) : this.products;
 }
 
- filteredProducts: IProduct[];
+ filteredProducts: IProduct[] = [];
 
  products: IProduct[]=[];
 
@@ -41,7 +40,7 @@ export class ProductListComponent implements OnInit {
      product.productName.toLocaleLowerCase().indexOf(filterBy) !== -1);
  }
  toggleImage(): void{
-     this.showImage=!this.showImage
+     this.showImage=!this.showImage;
  }
 
  ngOnInit(): void{
